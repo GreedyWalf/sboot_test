@@ -62,9 +62,15 @@
 		</dependency>
 
 		<!-- springBoot支持freemarker模版 -->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-freemarker</artifactId>-->
+		<!--</dependency>-->
+
+		<!--  springBoot支持thymeleaf模版 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-freemarker</artifactId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
 		<!-- springBoot支持webSocket -->

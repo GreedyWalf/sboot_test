@@ -39,4 +39,10 @@ public class HelloController {
         model.addAttribute("message", "Hello World");
         return "hello";
     }
+
+    @RequestMapping(value = "/thymeleaf")
+    public String hello(Model model){
+        model.addAttribute("name", "Hello Thymeleaf");
+        return "test";
+    }
 }
