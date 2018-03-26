@@ -20,7 +20,7 @@ import org.springframework.web.servlet.view.AbstractTemplateViewResolver;
 @SpringBootApplication  //组合注解，相当于@Configuration，@EnableAutoConfiguration，@ComponentScan
 
 //注意：使用@SpringBootApplication注解默认会扫描当前类所在的包或子包，如果需要指定扫描的包可以使用@ComponentScan注解指定扫描包路径
-@ComponentScan(basePackages = {"com.mystarter","com.qs.sboot"})
+@ComponentScan(basePackages = {"com.qs.sboot"})
 @EnableCaching
 public class SbootApplication {
 

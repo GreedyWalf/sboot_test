@@ -1,6 +1,6 @@
 package com.qs.sboot.controller;
 
-import com.mystarter.HelloService;
+//import com.mystarter.HelloService;
 import com.qs.sboot.controller.entity.AuthorSetting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,20 +17,10 @@ public class HelloController {
     @Resource
     private AuthorSetting authorSetting;
 
-    @Autowired
-    private HelloService helloService;
-
     @RequestMapping("/sayHello")
     @ResponseBody
     public String sayHello(){
         return "hello: name=" + authorSetting.getName() + "; age=" + authorSetting.getAge();
-    }
-
-
-    @RequestMapping("/myStarter")
-    @ResponseBody
-    public String testMyStarter(){
-        return "msg=" + helloService.getMsg();
     }
 
     @RequestMapping(value = "/hello")
@@ -38,11 +28,5 @@ public class HelloController {
         request.setAttribute("msg","helloWorld");
         model.addAttribute("message", "Hello World");
         return "hello";
-    }
-
-    @RequestMapping(value = "/thymeleaf")
-    public String hello(Model model){
-        model.addAttribute("name", "Hello Thymeleaf");
-        return "test";
     }
 }
