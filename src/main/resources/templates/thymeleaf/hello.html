@@ -4,6 +4,81 @@
     <title>测试thymeleaf模版</title>
 </head>
 <body>
+    <!-- 此时变量表达式和选择表达式效果是一致的 -->
     <p th:text="${name}">ceshi</p>
+    <p th:text="*{name}">ceshi</p>
+
+    <hr/>
+    <!-- 变量表达式和freemarker使用方式一致 -->
+    <p th:text="${user.userName}">ceshi</p>
+
+    <!-- 使用th:object属性中选择了user对象，之后可以使用选择表达式*{}直接获取对象中的属性值 -->
+    <div th:object="${user}">
+        <p th:text="*{userName}">userName</p>
+        <p th:text="*{email}">email</p>
+        <!-- 可以使用#object代替已经选择的对象 -->
+        <p th:text="${#object.email}">email2</p>
+    </div>
+
+
+    <!-- 测试集合 -->
+    <hr/>
+    <p th:text="${userList}">userList</p>
+    <p th:text="${userList[0]}">userList</p>
+    <p th:text="${userList[0].userName}">email</p>
+    <p th:text="${userList[0].email}">email</p>
+    <p th:text="${userList[0].getEmail().substring(0,9)}">email2</p>
+
+    <hr/>
+    <!-- 遍历list -->
+    <div th:each="user,status:${userList}">
+        <p th:text="${user.userName}">userName</p>
+        <p th:text="${user.email}">email</p>
+        <p th:text="|index: ${status.index}|">index</p>
+        <p th:text="|count: ${status.count}|">count</p>
+        <p th:text="|size: ${status.size}|">size</p>
+        <p th:text="|current: ${status.current}|">current</p>
+        <p th:text="|userName: ${status.current.userName}|">userName</p>
+        <p th:text="${status.first}">first</p>
+        <p th:text="|last: ${status.last}|">last</p>
+        <p th:text="|even: ${status.even}|">even</p>
+        <p th:text="|odd: ${status.odd}|">odd</p>
+    </div>
+
+    <!-- 遍历map -->
+    <hr/>
+    <p th:text="${resultMap}"></p>
+    <div th:each="entry,status:${resultMap}">
+        <p th:text="|key: ${entry.key}|">key</p>
+        <p th:text="|key: ${entry.getKey()}|">key</p>
+        <p th:text="|value: ${entry.value}|">value</p>
+        <p th:text="|value: ${entry.getValue()}|">value</p>
+
+        <p th:text="|userName: ${entry.value.userName}|"></p>
+        <p th:text="|email: ${entry.value.email}|"></p>
+    </div>
+
+
+    <!-- 逻辑判断 -->
+    <div th:if="${resultMap}">
+        resultMap值存在
+    </div>
+
+    <div th:if="not ${userMap}">
+        userMap值不存在
+    </div>
+
+    <!-- 和if相反 -->
+    <div th:unless="${userMap}">
+        userMap值不存在
+    </div>
+
+    <!-- switch..case.. -->
+    <div th:switch="${userList.size()}">
+        <p th:case="1">1个</p>
+        <p th:case="2">2个</p>
+        <p th:case="3">3个</p>
+        <p th:case="*">很多个</p>
+    </div>
 </body>
 </html>
